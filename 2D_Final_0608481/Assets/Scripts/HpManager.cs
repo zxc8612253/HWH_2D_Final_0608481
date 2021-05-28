@@ -25,7 +25,7 @@ public class HpManager : MonoBehaviour
     {
         RectTransform rect = Instantiate(rectDamage, transform); // 生成傷害數值在血條系統內
         rect.anchoredPosition = new Vector2(0, 200);             // 指定座標
-        rect.GetComponent<Text>().text = damage.ToString();        // 更新數值
+        rect.GetComponent<Text>().text = damage.ToString();      // 更新數值
 
         float y = rect.anchoredPosition.y;                       // 取得原始 Y 軸
 

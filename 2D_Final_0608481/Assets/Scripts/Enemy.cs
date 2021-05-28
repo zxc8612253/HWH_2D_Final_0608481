@@ -14,8 +14,7 @@ public class Enemy : MonoBehaviour
     public float cdAttack = 3;
     [Header("攻擊力"), Range(0, 1000)]
     public float attack = 20;
-    [Header("經驗值"), Range(0, 500)]
-    public float exp = 30;
+
 
     private Transform player;
     private Player _player;
@@ -96,8 +95,8 @@ public class Enemy : MonoBehaviour
             timer = 0;             // 計時器歸零
             psAttack.Play();       // 播放 攻擊特效
             Collider2D hit = Physics2D.OverlapCircle(transform.position, rangeAttack, 1<< 9);
-            hit.GetComponent<Player>().Hit(attack);
-        } 
+            if (hit && hit.tag == "玩家") hit.GetComponent<Player>().Hit(attack);
+        }
     }
     
     
@@ -124,6 +123,5 @@ public class Enemy : MonoBehaviour
         hp = 0;
         isDead = true;
         Destroy(gameObject, 1.5f);
-        _player.Exp(exp);                              // 將經驗值傳給玩家
     }
 }
